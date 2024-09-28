@@ -1,3 +1,1 @@
-print("Hello World")
-print("!@#")
-print(1234)
+print(123)
