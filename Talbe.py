@@ -1,2 +1,0 @@
-""""Creat Table"""
-'ADASDSAD'
