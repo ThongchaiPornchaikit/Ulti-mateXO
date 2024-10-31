@@ -89,7 +89,7 @@ game_frame = tk.Frame(root)  # สร้างเฟรมสำหรับเ�
 # สร้างปุ่มสำหรับบอร์ดเกม
 for row in range(3):
     for col in range(3):
-        button = tk.Button(game_frame, text="", width=10, height=3, command=lambda r=row, c=col: on_click(r, c))  # ปุ่มสำหรับวางชิ้นส่วน
+        button = tk.Button(game_frame, text="", width=20, height=10, command=lambda r=row, c=col: on_click(r, c))  # ปุ่มสำหรับวางชิ้นส่วน
         button.grid(row=row, column=col)  # วางปุ่มในบอร์ด
         buttons[row][col] = button  # บันทึกปุ่มในลิสต์
 
