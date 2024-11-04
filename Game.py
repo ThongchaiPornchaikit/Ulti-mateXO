@@ -196,18 +196,18 @@ def reset_game():
     selected_size = None  # รีเซ็ตขนาดที่เลือก
     for row in range(3):
         for col in range(3):
-            buttons[row][col].config(text="",bg=colors["b"])  # ล้างข้อความในปุ่ม
+            buttons[row][col].config(text=" ",bg=colors["b"])  # ล้างข้อความในปุ่ม
     update_pieces_label()  # อัปเดตป้ายจำนวนชิ้นส่วน
     replay_button.grid_forget()  # ซ่อนปุ่มรีเพลย์
 
 def show_replay_button():
-    replay_button.grid(row=4, column=1)  # แสดงปุ่มรีเพลย์
+    replay_button.grid(row=4,column=0,pady=10)  # แสดงปุ่มรีเพลย์
 
 def start_game():
     page_all = [homepage, chose_frame]
     for i in page_all:
         i.pack_forget()
-    game_frame.grid(row=0, column=0,padx=55,pady=50)  # แสดงบอร์ดเกม+เซ็ตไว้ตรงกลาง
+    game_frame.pack(fill=BOTH, expand=True, pady=50, padx= 240)  # แสดงบอร์ดเกม+เซ็ตไว้ตรงกลาง
     update_pieces_label()
 
 
@@ -222,36 +222,41 @@ def update_pieces_label():
     o_big = pieces['O']['big']
     
     pieces_label.config(text=(
-        f"X - เล็ก: {x_small}, กลาง: {x_medium}, ใหญ่: {x_big} | "
-        f"O - เล็ก: {o_small}, กลาง: {o_medium}, ใหญ่: {o_big}"
+        f"X - Small : {x_small}   Medium : {x_medium}   Big : {x_big}"
+    ))
+
+    pieces_label1.config(text=(
+        f"O - Small : {o_small}   Medium : {o_medium}   Big : {o_big}"
     ))
 
 # สร้างปุ่มสำหรับบอร์ดเกม
 for row in range(3):
-    game_frame.grid_rowconfigure(row, weight=1)  # ทำให้แถวขยาย
     for col in range(3):
-        button = Button(game_frame, text="", width=10, height=3,bg=colors["b"], fg=colors["text"], command=lambda r=row, c=col: on_click(r, c))  # ปุ่มสำหรับวางชิ้นส่วน
+        button = Button(game_frame, text="", width=19, height=7,bg=colors["b"], fg=colors["text"], command=lambda r=row, c=col: on_click(r, c))  # ปุ่มสำหรับวางชิ้นส่วน
         button.grid(row=row, column=col)  # วางปุ่มในบอร์ด
         buttons[row][col] = button  # บันทึกปุ่มในลิสต์
 
 size_buttons = {}  # สร้างลิสต์สำหรับปุ่มขนาด
 for size in sizes:
-    size_buttons[size] = Button(game_frame, text=size.capitalize(),bg=colors["b"], fg=colors["text"], command=lambda s=size: select_size(s))  # ปุ่มเลือกขนาด
-    size_buttons[size].grid(row=3, column=sizes[size]-1)  # วางปุ่มเลือกขนาด
+    size_buttons[size] = Button(game_frame, text=size.capitalize(),width=7,bg=colors["b"],font=("Helvetica",15), fg=colors["text"], command=lambda s=size: select_size(s))  # ปุ่มเลือกขนาด
+    size_buttons[size].grid(row=3, column=sizes[size]-1,pady = 15)  # วางปุ่มเลือกขนาด
 
-replay_button = Button(game_frame, text="Replay", command=reset_game,bg=colors["highlight"], fg=colors["text"])  # ปุ่มรีเพลย์
+replay_button = Button(game_frame, text="Replay", command=reset_game,bg=colors["highlight"], fg=colors["text"],width=7,font=("Helvetica",15))  # ปุ่มรีเพลย์
 
-turn_label = Label(game_frame, text=f"Player: {player_advand}",bg="#333333",fg=colors["text"])  # ป้ายเพื่อแสดงผู้เล่นปัจจุบัน
-turn_label.grid(row=1, column=4)  # วางมันไว้ด้านล่างบอร์ดเกม
+turn_label = Label(game_frame, text=f"Player: {player_advand}",bg="#333333",fg=colors["text"],font=("Helvetica",12))  # ป้ายเพื่อแสดงผู้เล่นปัจจุบัน
+turn_label.place(relx=0.5,rely=0.85,anchor=CENTER)  # วางมันไว้ด้านล่างบอร์ดเกม
 
-pieces_label = Label(game_frame, text=f"X Pieces: {pieces['X']}, O Pieces: {pieces['O']}",bg="#333333",fg=colors["text"])  # ป้ายเพื่อแสดงจำนวนชิ้นส่วนที่เหลือ
-pieces_label.grid(row=2, column=4)  # วางป้ายไว้ด้านล่าง
+pieces_label = Label(game_frame, text=f"X Pieces: {pieces['X']}",bg="#333333",fg=colors["text"],font=("Helvetica",12))  # ป้ายเพื่อแสดงจำนวนชิ้นส่วนที่เหลือ
+pieces_label.place(relx=0.5,rely=0.9,anchor=CENTER)  # วางป้ายไว้ด้านล่าง
+
+pieces_label1 = Label(game_frame, text=f"O Pieces: {pieces['O']}",bg="#333333",fg=colors["text"],font=("Helvetica",12))  # ป้ายเพื่อแสดงจำนวนชิ้นส่วนที่เหลือ
+pieces_label1.place(relx=0.5,rely=0.95,anchor=CENTER)  # วางป้ายไว้ด้านล่าง
 
 """จบส่วนgamemode advand"""
 
 """ส่วนการไปmodegameหริอไปหน้าอื่นๆ"""
 
-page_all = [homepage, chose_frame, game1] #ต้องมาเพิ่มตลอดถ้าเพิ่มหน้า
+page_all = [homepage, chose_frame, game1, game_frame] #ต้องมาเพิ่มตลอดถ้าเพิ่มหน้า
 
 def move_game1():
     for i in page_all:
@@ -313,6 +318,10 @@ back.pack(side=TOP, pady=40)
 #ปุ่มกลับไปหน้าเลือกโหมดของgamemodegeneral
 back_bt_game1 = Button(game1, text="Back", fg="white", bg="black", font=("Helvetica", 20), command=move_page_chose)
 back_bt_game1.grid(row=3, column=1, pady=10)
+
+#ปุ่มกลับไปหน้าเลือกโหมดของgamemodeadvand
+back_bt_game2 = Button(game_frame, text="Back", fg="white",bg=colors["b"], width=7, font=("Helvetica", 15), command=move_page_chose)
+back_bt_game2.grid(row=4, column=2, pady=10)
 
 
 """จบส่วนปุ่ม"""
