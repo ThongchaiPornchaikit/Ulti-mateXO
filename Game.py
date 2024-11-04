@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import messagebox
-import customtkinter
 
 root = Tk()
 root.title("Game")
@@ -45,19 +44,19 @@ game1 = Frame(main_frame,bg="black")
 
 player = "X"
 
-def b_click(b):
+def b_click_general(b):
     global player
     if b["text"] == " ":
         b["text"] = player
-        if check_winner():
+        if check_winner_general():
             messagebox.showinfo("Winner!", f"Player {player} wins!")
-            reset_game()
-        elif is_draw():
+            reset_game_general()
+        elif is_draw_general():
             messagebox.showinfo("Draw!", "It's a draw!")
-            reset_game()
+            reset_game_general()
         player = "O" if player == "X" else "X"
 
-def check_winner():
+def check_winner_general():
     # Winning combinations: rows, columns, and diagonals
     winning_combinations = [
         (b1, b2, b3),
@@ -75,11 +74,11 @@ def check_winner():
             return True
     return False
 
-def is_draw():
+def is_draw_general():
     # Check if all buttons are filled
     return all(button["text"] != " " for button in [b1, b2, b3, b4, b5, b6, b7, b8, b9])
 
-def reset_game():
+def reset_game_general():
     for button in [b1, b2, b3, b4, b5, b6, b7, b8, b9]:
         button["text"] = " "
     global player
@@ -87,17 +86,17 @@ def reset_game():
 
 #สร้างตาราง 3x3
 
-b1 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b1))
-b2 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b2))
-b3 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b3))
+b1 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b1))
+b2 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b2))
+b3 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b3))
 
-b4 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b4))
-b5 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b5))
-b6 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b6))
+b4 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b4))
+b5 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b5))
+b6 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b6))
 
-b7 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b7))
-b8 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b8))
-b9 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click(b9))
+b7 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b7))
+b8 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b8))
+b9 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b9))
 
 #Grid our buttons to the screen
 
@@ -115,7 +114,7 @@ b9.grid(row=2, column=2)
 
 """จบส่วนgamemode general"""
 
-"""จบส่วนgamemode advand"""
+"""gamemode advand"""
 
 player_advand = "X"  # ผู้เล่นเริ่มต้นเป็น X
 sizes = {"small": 1, "medium": 2, "big": 3}  # ขนาดของชิ้นส่วน
