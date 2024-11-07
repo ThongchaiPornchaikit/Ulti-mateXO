@@ -5,17 +5,18 @@ root = Tk()
 root.title("Game")
 root.geometry("900x700+300+50")
 
-main_frame = Frame(root,bg="black")
+main_frame = Frame(root,bg="#333333")
 main_frame.pack(fill=BOTH, expand=True)
 
 """homepage"""
 
-homepage = Frame(main_frame,bg="black")
+homepage = Frame(main_frame,bg="#333333")
+main_frame.pack(fill=BOTH, expand=True)
 
 titlelbmain = Label(homepage,text="Ulti-mateXO",
-                  font=("Helvetica",60),
+                  font=("Fixedsys",60,"bold"),
                   fg="White",
-                  bg="black").pack(pady=80)
+                  bg="#333333").pack(pady=80)
 
 homepage.pack(fill=BOTH, expand=True)
 
@@ -23,21 +24,21 @@ homepage.pack(fill=BOTH, expand=True)
 
 """chose_frame"""
 
-chose_frame = Frame(main_frame,bg="black")
+chose_frame = Frame(main_frame,bg="#333333")
 
 #ข้อความ
-heading = Label(chose_frame, text="Choose Your Mode", fg="white", font=("Helvetica", 35), bg="black")
-heading.pack(pady=50)
+heading = Label(chose_frame, text="Choose Your Mode", fg="white", font=("Fixedsys", 50), bg="#333333")
+heading.pack(pady=70)
 
 #รูปแบบปุ่ม
-ButtonType = Frame(chose_frame, bg="black")
+ButtonType = Frame(chose_frame, bg="#333333")
 ButtonType.pack(pady=60)
 
 """จบส่วนของchose_frame"""
 
 """gamemode general"""
 
-game1 = Frame(main_frame,bg="black")
+game1 = Frame(main_frame,bg="#333333")
 
 
 # Button Click function
@@ -86,17 +87,17 @@ def reset_game_general():
 
 #สร้างตาราง 3x3
 
-b1 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b1))
-b2 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b2))
-b3 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b3))
+b1 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b1))
+b2 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b2))
+b3 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b3))
 
-b4 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b4))
-b5 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b5))
-b6 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b6))
+b4 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b4))
+b5 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b5))
+b6 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b6))
 
-b7 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b7))
-b8 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b8))
-b9 = Button(game1, text=" ", font=("Helvetica",20),height=4,width=8,bg="black",fg="white", command= lambda: b_click_general(b9))
+b7 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b7))
+b8 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b8))
+b9 = Button(game1, text=" ", font=("Fixedsys",20,"bold"),height=4,width=8,bg="#333333",fg="white", command= lambda: b_click_general(b9))
 
 #Grid our buttons to the screen
 
@@ -139,7 +140,7 @@ def check_winner():
 
 # Colors
 colors = {
-    "X": "#ff6666",
+    "X": "yellow",
     "O": "#66b3ff",
     "bg": "#222222",
     "b": "#444444",
@@ -207,7 +208,7 @@ def start_game():
     page_all = [homepage, chose_frame]
     for i in page_all:
         i.pack_forget()
-    game_frame.pack(fill=BOTH, expand=True, pady=50, padx= 240)  # แสดงบอร์ดเกม+เซ็ตไว้ตรงกลาง
+    game_frame.pack(fill=BOTH, expand=True, pady=50, padx= 235)  # แสดงบอร์ดเกม+เซ็ตไว้ตรงกลาง
     update_pieces_label()
 
 
@@ -238,18 +239,18 @@ for row in range(3):
 
 size_buttons = {}  # สร้างลิสต์สำหรับปุ่มขนาด
 for size in sizes:
-    size_buttons[size] = Button(game_frame, text=size.capitalize(),width=7,bg=colors["b"],font=("Helvetica",15), fg=colors["text"], command=lambda s=size: select_size(s))  # ปุ่มเลือกขนาด
+    size_buttons[size] = Button(game_frame, text=size.capitalize(),width=7,bg=colors["b"],font=("Fixedsys",15,"bold"), fg=colors["text"], command=lambda s=size: select_size(s))  # ปุ่มเลือกขนาด
     size_buttons[size].grid(row=3, column=sizes[size]-1,pady = 15)  # วางปุ่มเลือกขนาด
 
-replay_button = Button(game_frame, text="Replay", command=reset_game,bg=colors["highlight"], fg=colors["text"],width=7,font=("Helvetica",15))  # ปุ่มรีเพลย์
+replay_button = Button(game_frame, text="Replay", command=reset_game,bg=colors["highlight"], fg=colors["text"],width=7,font=("Fixedsys",15))  # ปุ่มรีเพลย์
 
-turn_label = Label(game_frame, text=f"Player: {player_advand}",bg="#333333",fg=colors["text"],font=("Helvetica",12))  # ป้ายเพื่อแสดงผู้เล่นปัจจุบัน
+turn_label = Label(game_frame, text=f"Player: {player_advand}",bg="#333333",fg=colors["text"],font=("Fixedsys",15,"bold"))  # ป้ายเพื่อแสดงผู้เล่นปัจจุบัน
 turn_label.place(relx=0.5,rely=0.85,anchor=CENTER)  # วางมันไว้ด้านล่างบอร์ดเกม
 
-pieces_label = Label(game_frame, text=f"X Pieces: {pieces['X']}",bg="#333333",fg=colors["text"],font=("Helvetica",12))  # ป้ายเพื่อแสดงจำนวนชิ้นส่วนที่เหลือ
+pieces_label = Label(game_frame, text=f"X Pieces: {pieces['X']}",bg="#333333",fg=colors["text"],font=("Fixedsys",15,"bold"))  # ป้ายเพื่อแสดงจำนวนชิ้นส่วนที่เหลือ
 pieces_label.place(relx=0.5,rely=0.9,anchor=CENTER)  # วางป้ายไว้ด้านล่าง
 
-pieces_label1 = Label(game_frame, text=f"O Pieces: {pieces['O']}",bg="#333333",fg=colors["text"],font=("Helvetica",12))  # ป้ายเพื่อแสดงจำนวนชิ้นส่วนที่เหลือ
+pieces_label1 = Label(game_frame, text=f"O Pieces: {pieces['O']}",bg="#333333",fg=colors["text"],font=("Fixedsys",15,"bold"))  # ป้ายเพื่อแสดงจำนวนชิ้นส่วนที่เหลือ
 pieces_label1.place(relx=0.5,rely=0.95,anchor=CENTER)  # วางป้ายไว้ด้านล่าง
 
 """จบส่วนgamemode advand"""
@@ -261,7 +262,7 @@ page_all = [homepage, chose_frame, game1, game_frame] #ต้องมาเพ�
 def move_game1():
     for i in page_all:
             i.pack_forget()
-    game1.pack(fill=BOTH, expand=True, pady=50, padx= 240)
+    game1.pack(fill=BOTH, expand=True, pady=70, padx= 230)
 
 def move_page_chose():
     for i in page_all:
@@ -295,34 +296,69 @@ def back_page():
 
 """ส่วนปุ่น"""
 
+# กำหนดชุดสี
+bg_color = "#2E2E2E"  # พื้นหลังสีเทาเข้ม
+button_fg = "#FFFFFF"  # ตัวอักษรปุ่มสีขาว
+button_bg = "#1A1A1A"  # พื้นหลังปุ่มสีดำ
+button_hover = "#333333"  # สีปุ่มเมื่อชี้เมาส์
+
+def on_enter(e):
+    e.widget.config(bg=button_hover, font=("Fixedsys", 28), width=23)  # ขยายปุ่มขึ้นเล็กน้อย
+
+def on_leave(e):
+    e.widget.config(bg=button_bg, font=("Fixedsys", 27), width=20)  # คืนค่าปุ่มเมื่อเมาส์ออก
+
+
 #ปุ่มของhomepage
 bpm = Button(homepage,
-             text="Play",
-             font=("Helvetica",24),
+             text="Start Game",
+             font=("Fixedsys",28,"bold"),
              width=20,
              height=2,
              fg="White",
-             bg="black",
-             command=next_page).pack(pady=150)
+             bg="#1A1A1A",
+             activebackground=button_hover,
+             activeforeground=button_fg,
+             borderwidth=2,
+             relief="raised",
+             command=next_page)
+bpm.bind("<Enter>", on_enter)
+bpm.bind("<Leave>", on_leave)
+bpm.pack(pady=110)
 
-#ปุ่มเลือกโหมดของchoseframe
-general = Button(ButtonType, text="General Mode", fg="white", bg="black", font=("Helvetica", 25), command=move_game1)
-general.pack(side=TOP, pady=20)
 
-advance = Button(ButtonType, text="Advance Mode", fg="white", bg="black", font=("Helvetica", 25), command=start_game)
-advance.pack(side=TOP, pady=30)
 
-back = Button(ButtonType, text="Back", fg="white", bg="black", font=("Helvetica", 25), command=back_page , width=8)
-back.pack(side=TOP, pady=40)
+# ปุ่ม General Mode
+general = Button(ButtonType, text="General Mode", fg=button_fg, bg=button_bg, font=("Fixedsys", 25),command=move_game1,
+                 activebackground=button_hover, activeforeground=button_fg,width=20)
+general.pack(side=TOP, pady=10)
+general.bind("<Enter>", on_enter)
+general.bind("<Leave>", on_leave)
+
+# ปุ่ม Advance Mode
+advance = Button(ButtonType, text="Advance Mode", fg=button_fg, bg=button_bg, font=("Fixedsys", 25),command=start_game,
+                 activebackground=button_hover, activeforeground=button_fg,width=20)
+advance.pack(side=TOP, pady=12)
+advance.bind("<Enter>", on_enter)
+advance.bind("<Leave>", on_leave)
+
+# ปุ่ม Back
+back = Button(ButtonType, text="Back", fg=button_fg, bg=button_bg, font=("Fixedsys", 25),command=back_page,
+              activebackground=button_hover, activeforeground=button_fg, width=20)
+back.pack(side=TOP, pady=14)
+back.bind("<Enter>", on_enter)
+back.bind("<Leave>", on_leave)
 
 #ปุ่มกลับไปหน้าเลือกโหมดของgamemodegeneral
-back_bt_game1 = Button(game1, text="Back", fg="white", bg="black", font=("Helvetica", 20), command=move_page_chose)
-back_bt_game1.grid(row=3, column=1, pady=10)
+back_bt_game1 = Button(game1, text="Back", fg="white", bg="#333333", font=("Fixedsys", 20,"bold"), command=move_page_chose)
+back_bt_game1.grid(row=3, column=2, pady=30)
+
+reset_bt_game1 = Button(game1, text="Reset", fg="white", bg="#333333", font=("Fixedsys", 20,"bold"), command=reset_game_general)
+reset_bt_game1.grid(row=3, column=0, pady=30)
 
 #ปุ่มกลับไปหน้าเลือกโหมดของgamemodeadvand
-back_bt_game2 = Button(game_frame, text="Back", fg="white",bg=colors["b"], width=7, font=("Helvetica", 15), command=move_page_chose)
+back_bt_game2 = Button(game_frame, text="Back", fg="white",bg=colors["b"], width=7, font=("Fixedsys", 15,"bold"), command=move_page_chose)
 back_bt_game2.grid(row=4, column=2, pady=10)
-
 
 """จบส่วนปุ่ม"""
 
